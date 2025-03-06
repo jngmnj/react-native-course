@@ -1,38 +1,68 @@
-import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, Text, View } from "react-native";
 
-import { HelloWave } from '@/components/HelloWave';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-
-const Header = () => (
-  <ThemedView>
-    <HelloWave />
-  </ThemedView>
-);
+const Header = (props: any) => <Text>{props.title}</Text>;
 const MyProfile = () => (
-  <ThemedView>
-    <ThemedText>My Profile</ThemedText>
-  </ThemedView>
+  <Text>
+    <Profile
+      uri="https://i.namu.wiki/i/pKp6bM6ovVkqzTlwj5lkWjCfyLCITAU3bP5chwJc7TcsgEh9dJxNGbAUfnTTlFsjAzmIG586bMk56Oa5OgHEZw.webp"
+      name="카리나"
+      profileSize={64}
+    />
+  </Text>
 );
-const Division = () => (
-  <ThemedView>
-    <ThemedText>Division</ThemedText>
-  </ThemedView>
-);
+const Profile = (props: any) => {
+  return (
+    <View style={{ flexDirection: "row" }}>
+      <Image
+        source={{
+          uri: props.uri
+        }}
+        style={{
+          width: props.profileSize,
+          height: props.profileSize,
+        }}
+      />
+      <Text>{props.name}</Text>
+    </View>
+  );
+}
+const Division = () => <Text>Division</Text>;
 const FriendSection = () => (
-  <ThemedView>
-    <ThemedText>Friend Section</ThemedText>
-  </ThemedView>
+  <Text></Text>
 );
-const FriendList = () => (
-  <ThemedView>
-    <ThemedText>Friend List</ThemedText>
-  </ThemedView>
-);
+const FriendList = () => {
+  return (
+    <View>
+      <Profile
+        uri="https://i.namu.wiki/i/pKp6bM6ovVkqzTlwj5lkWjCfyLCITAU3bP5chwJc7TcsgEh9dJxNGbAUfnTTlFsjAzmIG586bMk56Oa5OgHEZw.webp"
+        name="카리나"
+        profileSize={50}
+      />
+      <Profile
+        uri="https://i.namu.wiki/i/pKp6bM6ovVkqzTlwj5lkWjCfyLCITAU3bP5chwJc7TcsgEh9dJxNGbAUfnTTlFsjAzmIG586bMk56Oa5OgHEZw.webp"
+        name="카리나"
+        profileSize={50}
+      />
+      <Profile
+        uri="https://i.namu.wiki/i/pKp6bM6ovVkqzTlwj5lkWjCfyLCITAU3bP5chwJc7TcsgEh9dJxNGbAUfnTTlFsjAzmIG586bMk56Oa5OgHEZw.webp"
+        name="카리나"
+        profileSize={50}
+      />
+      <Profile
+        uri="https://i.namu.wiki/i/pKp6bM6ovVkqzTlwj5lkWjCfyLCITAU3bP5chwJc7TcsgEh9dJxNGbAUfnTTlFsjAzmIG586bMk56Oa5OgHEZw.webp"
+        name="카리나"
+        profileSize={50}
+      />
+    </View>
+  );
+}
+
+
 export default function HomeScreen() {
   return (
     <View>
-      <Header />
+      <Header title="친구"/>
       <MyProfile />
       <Division />
       <FriendSection />
