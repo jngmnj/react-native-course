@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     gap: 8,
+    borderStyle: "solid",
+    height: "100%",
     paddingHorizontal: 20,
   },
 });

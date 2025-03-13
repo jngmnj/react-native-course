@@ -14,7 +14,6 @@ const FriendSection = (props: FriendSectionProps) => {
         flexDirection: "row",
         justifyContent: "space-between",
         width: "100%",
-        paddingHorizontal: 20,
       }}
     >
       <Text style={{ color: "grey" }}>친구 {props.friendProfileLen}</Text>

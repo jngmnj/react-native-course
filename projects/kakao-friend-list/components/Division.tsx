@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 const Division = () => {
   return (
-    <View style={{ height: 0.5, backgroundColor: 'lightgrey', width: "100%" }} />    
+    <View style={{ height: 0, borderBottomWidth: 0.5, borderBottomColor: 'lightgrey', width: "100%" }} />    
   )
 }
 
