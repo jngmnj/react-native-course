@@ -1,45 +1,87 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { TabList, Tabs, TabSlot, TabTrigger } from "expo-router/ui";
+import { useState } from "react";
+import { StyleSheet } from "react-native";
+import TabButton from "../../components/TabButton";
 
-// import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+// Defining the layout of the custom tab navigator
+export default function Layout() {
+  const [selectedTabId, setSelectedTabId] = useState(0);
+  
+  
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        // tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'adsfdsfsd',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+    <Tabs>
+      <TabSlot style={{ flex: 1, backgroundColor: "#fff"}} />
+      <TabList
+        style={{
+          width: "100%",
+          backgroundColor: "white",
+          height: 70,
+          flexDirection: "row",
+          justifyContent: "space-around",
+          borderTopWidth: 0.5,
+          borderTopColor: "lightgrey",
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
+      >
+        <TabTrigger name="home" href="/" style={styles.TabTrigger}>
+          <TabButton
+            isSelected={selectedTabId === 0}
+            onPress={() => setSelectedTabId(0)}
+            activeIoniconName={"person"}
+            inactiveIoniconName={"person-outline"}
+          >
+            Home
+          </TabButton>
+        </TabTrigger>
+
+        <TabTrigger
+          name="article"
+          href="/(tabs)/chat"
+          style={styles.TabTrigger}
+        >
+          <TabButton
+            isSelected={selectedTabId === 1}
+            onPress={() => setSelectedTabId(1)}
+            activeIoniconName={"chatbubble-sharp"}
+            inactiveIoniconName={"chatbubble-outline"}
+          >
+            Chat
+          </TabButton>
+        </TabTrigger>
+        <TabTrigger
+          name="article"
+          href="/(tabs)/explore"
+          style={styles.TabTrigger}
+        >
+          <TabButton
+            isSelected={selectedTabId === 2}
+            onPress={() => setSelectedTabId(2)}
+            activeFontistoName={"hashtag"}
+            inactiveFontistoName={"hashtag"}
+          >
+            explore
+          </TabButton>
+        </TabTrigger>
+        <TabTrigger
+          name="article"
+          href="/(tabs)/more"
+          style={styles.TabTrigger}
+        >
+          <TabButton
+            isSelected={selectedTabId === 3}
+            onPress={() => setSelectedTabId(3)}
+            activeIoniconName={"ellipsis-horizontal"}
+            inactiveIoniconName={"ellipsis-horizontal-outline"}
+          >
+            more
+          </TabButton>
+        </TabTrigger>
+      </TabList>
     </Tabs>
   );
 }
+const styles = StyleSheet.create({
+  TabTrigger: {
+    alignItems: "center",
+    justifyContent: "center",
+  }
+});
