@@ -26,8 +26,9 @@ const TabButton = ({
   const insets = useSafeAreaInsets();
   return (
     <TouchableOpacity
+      activeOpacity={1}
       onPress={onPress}
-      style={{ paddingBottom: insets.bottom,}}
+      style={{ paddingBottom: insets.bottom, flex: 1, alignItems: "center" , justifyContent: "center"}}
     >
       {activeFontistoName && inactiveFontistoName ? (
         <Fontisto
